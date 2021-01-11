@@ -1,0 +1,108 @@
+{
+    "email": "abc@gmail.com",
+    "Upload Pitch Report": [
+      {
+        "name": "FINAL PDF LVT AND LAMINATE.pdf",
+        "type": "application/pdf",
+        "content": "http://localhost:3001/FINAL PDF LVT AND LAMINATE.pdf"
+      }
+    ],
+    "Your name": "Abc",
+    "Your title": "Abc",
+    "Mobile number": "032131",
+    "Company name": "Abc",
+    "Company registered": false,
+    "Company URL": "https://abc.com",
+    "How did you find us": "Web search",
+    "Current fund raising round Instruments": "Equity (shares)",
+    "How much capital looking to raise in the current fund raising round": "1000",
+    "Post money valuation for equity": "None",
+    "Rationale behind your Valuation": [
+      "Growth in sales",
+      "Gross profit / gross margin",
+      "Profit"
+    ],
+    "Debt in the company": "0",
+    "The current fundraising will take it to profitability": "Yes",
+    "Fundraising Round": "Pre-seed",
+    "Investors identified": [
+      "Lead investor",
+      "VC(s)",
+      "Angel(s)",
+      "Strategic investors"
+    ],
+    "Committed capital as of today": "0",
+    "founders and key employees percent": 12,
+    "Capital raised": true,
+    "Capital Raised1": [
+      {
+        "Investment amount USD": 100,
+        "Monthyear": "10/12",
+        "Type of raise": "Equity",
+        "Post money valuation": 26
+      }
+    ],
+    "What parties are you dealing with": [
+      "B2C-business-to-consumer",
+      "B2B-business-to-business",
+      "B2B2C-business to business to consumer"
+    ],
+    "describe your product": [
+      "Fintech",
+      "Edtech",
+      "Regtech",
+      "Deep tech",
+      "ML / AI driven product(s)"
+    ],
+    "Secondary Effects": "Yes",
+    "The problem you are solving": "Abc",
+    "Solution to the problem": "Abc",
+    "Characteristics make your solution  unique": "Abc",
+    "Typical customer user": "Abc",
+    "TAM": "abc",
+    "SAM": "abc",
+    "SOM": "abc",
+    "Geographical Markets": [
+      "Home market",
+      "South East Asia",
+      "Asia Pacific"
+    ],
+    "Co creation": true,
+    "Have paying customers users": "Yes",
+    "Pricing models": [
+      "Subscription model (SaaS)",
+      "Per transaction",
+      "Revenue share / percentage of transaction",
+      "Advertisement income"
+    ],
+    "Pricing revenue model": "Avx",
+    "Sales revenue last month": "Abc",
+    "Estimated Sales revenue for next 12 months": "Abc",
+    "Total monthly expenses at present": "Abc",
+    "T1 Name": "ABC",
+    "T1 Position": "Abc",
+    "T1 LinkedIn": "Abc",
+    "T2 Name": "Abc",
+    "T2 Position": "Abc",
+    "T2 LinkedIn": "Abc",
+    "T3 Name": "Abc",
+    "T3 Position": "Abc",
+    "T3 LinkedIn": "Abc",
+    "Top challenges in team": [
+      "Finding the right CTO",
+      "Finding the right COO",
+      "Managing a growing organisation",
+      "Finding the right sales people"
+    ],
+    "GTM strategy": [
+      "Traditional online advertisement (banners and adwords)",
+      "Social marketing (influencers on social platforms, LinkedIn, etc.)",
+      "Traditional offline advertisement (newspapers, billboards, magazines, etc.)",
+      "Channel partners",
+      "Network effects (the user/customers market the product for you)",
+      "other"
+    ],
+    "GTM strategy-Comment": "dsadsad",
+    "Overall sales marketing strategy": "Abc",
+    "new_field": "Abc"
+  }
