@@ -4,8 +4,8 @@ const createTable = require("./createTable");
 const { listTables } = require("./listTables");
 const updateSchema = require("./updateSchema");
 
-async function insertRow(tableId, row) {
-  return new Promise((resolve,reject)=>{
+function insertRow(tableId, row) {
+  return new Promise(async (resolve, reject) => {
     const tables = await listTables();
     if (tables.includes(tableId)) {
       try {
@@ -20,7 +20,7 @@ async function insertRow(tableId, row) {
         console.log("Create Table ERR::", err);
       }
     }
-  
+
     setTimeout(async () => {
       try {
         const tableRow = {};
@@ -39,8 +39,7 @@ async function insertRow(tableId, row) {
         reject(err);
       }
     }, 5000);
-  
-  })
+  });
 }
 
 module.exports = insertRow;
