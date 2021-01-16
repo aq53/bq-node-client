@@ -11,12 +11,14 @@ function insertRow(tableId, row) {
       try {
         await updateSchema(tableId, row);
       } catch (err) {
+        reject(err)
         console.log("Update Schema ERR::", err);
       }
     } else {
       try {
         await createTable(tableId, row);
       } catch (err) {
+        reject(err)
         console.log("Create Table ERR::", err);
       }
     }
