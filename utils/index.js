@@ -22,6 +22,8 @@ const camelize = (str) => {
     );
 };
 const datasetId = "survey";
+const email = "";
+const password = "";
 
 module.exports = {
   camelize,
