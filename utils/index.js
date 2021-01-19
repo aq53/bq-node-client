@@ -28,5 +28,7 @@ const password = "";
 module.exports = {
   camelize,
   datasetId,
+  email,
+  password,
   returnDataType,
 };
