@@ -2,7 +2,16 @@ const bigquery = require("../config/bq");
 const { camelize, returnDataType, datasetId } = require("../utils");
 
 async function createTable(tableId, row) {
-  const schema = [];
+  const schema = [
+    {
+      name: "postId",
+      type: "STRING",
+    },
+    {
+      name: "postDate",
+      type: "DATETIME",
+    },
+  ];
   for (let key in row) {
     console.log("KEY::", key, typeof key);
     // if (returnDataType(typeof row[key]) !== "RECORD") {

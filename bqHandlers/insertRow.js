@@ -3,6 +3,7 @@ const { camelize, datasetId } = require("../utils");
 const createTable = require("./createTable");
 const { listTables } = require("./listTables");
 const updateSchema = require("./updateSchema");
+const uuid = require("uuid").v4;
 
 function insertRow(tableId, row) {
   return new Promise(async (resolve, reject) => {
@@ -11,21 +12,24 @@ function insertRow(tableId, row) {
       try {
         await updateSchema(tableId, row);
       } catch (err) {
-        reject(err)
+        reject(err);
         console.log("Update Schema ERR::", err);
       }
     } else {
       try {
         await createTable(tableId, row);
       } catch (err) {
-        reject(err)
+        reject(err);
         console.log("Create Table ERR::", err);
       }
     }
 
     setTimeout(async () => {
       try {
-        const tableRow = {};
+        const tableRow = {
+          postId: uuid(),
+          postDate: bigquery.datetime(new Date().toISOString()),
+        };
         for (let key in row) {
           if (typeof row[key] === "object") {
             console.log(typeof row[key], key);
