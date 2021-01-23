@@ -5,6 +5,32 @@ const { listTables } = require("./listTables");
 const updateSchema = require("./updateSchema");
 const uuid = require("uuid").v4;
 
+async function insertIntoRelationTable(tableRow) {
+  const row1 = {
+    postId: tableRow.postId,
+    statusText: "Co Creation",
+    statusValue: tableRow["coCreation"] ? 1 : 0,
+  };
+  const row2 = {
+    postId: tableRow.postId,
+    statusText: "Secondary Effects",
+    statusValue: tableRow["secondaryEffects"].toLowerCase() === "yes" ? 1 : 0,
+  };
+
+  const row3 = {
+    postId: tableRow.postId,
+    statusText: "GTM strategy",
+    statusValue: tableRow["gtmStrategy"].toLowerCase().includes("network")
+      ? 1
+      : 0,
+  };
+
+  await bigquery
+    .dataset(datasetId)
+    .table("hal_data_validation")
+    .insert([row1, row2, row3]);
+}
+
 function insertRow(tableId, row) {
   return new Promise(async (resolve, reject) => {
     const tables = await listTables();
@@ -39,6 +65,7 @@ function insertRow(tableId, row) {
           }
         }
         await bigquery.dataset(datasetId).table(tableId).insert([tableRow]);
+        await insertIntoRelationTable(tableRow);
         resolve({ data: row, tableId });
       } catch (err) {
         console.log("INSERT ROW::", err);
