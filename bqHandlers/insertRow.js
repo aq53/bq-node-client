@@ -9,7 +9,9 @@ async function insertIntoRelationTable(tableRow) {
   const coCreation = tableRow["coCreation"];
   const secondaryEffects = tableRow["secondaryEffects"].toLowerCase();
   const gtmStrategy = tableRow["gtmStrategy"].toLowerCase();
-  const geographicalMarkets = tableRow["geographicalMarkets"].toLowerCase();
+  const geographicalMarkets = JSON.parse(
+    tableRow["geographicalMarkets"].toLowerCase()
+  );
   const fundraisingRound = tableRow["fundraisingRound"].toLowerCase();
   const salesRevenueLastMonth = tableRow["salesRevenueLastMonth"];
   const row1 = {
@@ -31,8 +33,8 @@ async function insertIntoRelationTable(tableRow) {
     postId: tableRow.postId,
     statusText: "Geo",
     statusValue:
-      geographicalMarkets === "south east asia" ||
-      geographicalMarkets === "asia pacific"
+      geographicalMarkets.includes("south east asia") ||
+      geographicalMarkets.includes("asia pacific")
         ? 1
         : 0,
   };
@@ -52,7 +54,7 @@ async function insertIntoRelationTable(tableRow) {
     statusText: "Revenue",
     statusValue: salesRevenueLastMonth ? 1 : 0,
   };
-  
+
   await bigquery
     .dataset(datasetId)
     .table("hal_data_validation")
