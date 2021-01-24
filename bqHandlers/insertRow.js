@@ -6,29 +6,57 @@ const updateSchema = require("./updateSchema");
 const uuid = require("uuid").v4;
 
 async function insertIntoRelationTable(tableRow) {
+  const coCreation = tableRow["coCreation"];
+  const secondaryEffects = tableRow["secondaryEffects"].toLowerCase();
+  const gtmStrategy = tableRow["gtmStrategy"].toLowerCase();
+  const geographicalMarkets = tableRow["geographicalMarkets"].toLowerCase();
+  const fundraisingRound = tableRow["fundraisingRound"].toLowerCase();
+  const salesRevenueLastMonth = tableRow["salesRevenueLastMonth"];
   const row1 = {
     postId: tableRow.postId,
     statusText: "Co Creation",
-    statusValue: tableRow["coCreation"] ? 1 : 0,
+    statusValue: coCreation ? 1 : 0,
   };
   const row2 = {
     postId: tableRow.postId,
     statusText: "Secondary Effects",
-    statusValue: tableRow["secondaryEffects"].toLowerCase() === "yes" ? 1 : 0,
+    statusValue: secondaryEffects === "yes" ? 1 : 0,
   };
-
   const row3 = {
     postId: tableRow.postId,
     statusText: "GTM strategy",
-    statusValue: tableRow["gtmStrategy"].toLowerCase().includes("network")
-      ? 1
-      : 0,
+    statusValue: gtmStrategy.includes("network") ? 1 : 0,
   };
-
+  const row4 = {
+    postId: tableRow.postId,
+    statusText: "Geo",
+    statusValue:
+      geographicalMarkets === "south east asia" ||
+      geographicalMarkets === "asia pacific"
+        ? 1
+        : 0,
+  };
+  const row5 = {
+    postId: tableRow.postId,
+    statusText: "Stage",
+    statusValue:
+      fundraisingRound === "pre-seed" ||
+      fundraisingRound === "seed" ||
+      fundraisingRound === "bridge round" ||
+      fundraisingRound === "series a"
+        ? 1
+        : 0,
+  };
+  const row6 = {
+    postId: tableRow.postId,
+    statusText: "Revenue",
+    statusValue: salesRevenueLastMonth ? 1 : 0,
+  };
+  
   await bigquery
     .dataset(datasetId)
     .table("hal_data_validation")
-    .insert([row1, row2, row3]);
+    .insert([row1, row2, row3, row4, row5, row6]);
 }
 
 function insertRow(tableId, row) {
