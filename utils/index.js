@@ -24,6 +24,7 @@ const camelize = (str) => {
 const datasetId = "survey";
 const email = "";
 const password = "";
+const bucketName = "hal-test";
 
 module.exports = {
   camelize,
@@ -31,4 +32,5 @@ module.exports = {
   email,
   password,
   returnDataType,
+  bucketName,
 };

@@ -3,7 +3,7 @@ const path = require("path");
 
 const storage = new Storage({
   projectId: "grand-strand-300313",
-  keyFilename: path.join(__dirname, "../bq/gcpKeyFile.json"),
+  keyFilename: path.join(__dirname, "/gcpKeyFile.json"),
 });
 
 module.exports = storage;

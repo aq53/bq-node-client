@@ -1,15 +1,14 @@
 const uploadFile = require("../middleware/upload");
-
+const fs = require("fs");
+const uploadFileToCloudStorage = require("../cloudStorageHandlers/index.js");
 const upload = async (req, res) => {
   try {
-    await uploadFile(req, res).then((file) => {
-      console.log("file::::", file);
-    });
+    await uploadFile(req, res);
 
     if (req.file == undefined) {
       return res.status(400).send({ message: "Please upload a file!" });
     }
-
+    await uploadFileToCloudStorage(req.file.originalname);
     res.status(200).send({
       message: "Uploaded the file successfully: ",
     });
@@ -40,7 +39,7 @@ const getListFiles = (req, res) => {
     files.forEach((file) => {
       fileInfos.push({
         name: file,
-        url: baseUrl + file,
+        url: directoryPath + file,
       });
     });
 
