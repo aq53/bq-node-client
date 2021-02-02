@@ -1,4 +1,4 @@
-const bigquery = require("../config/bq");
+const bigquery = require("../config/gcp/bq");
 const { datasetId } = require("../utils");
 async function getDataset() {
   const [dataset] = await bigquery.dataset(datasetId).get();

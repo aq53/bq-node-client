@@ -1,4 +1,4 @@
-const bigquery = require("../config/bq");
+const bigquery = require("../config/gcp/bq");
 const { camelize, datasetId } = require("../utils");
 const createTable = require("./createTable");
 const { listTables } = require("./listTables");

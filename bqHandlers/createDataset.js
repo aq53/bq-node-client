@@ -1,4 +1,4 @@
-const bigquery = require("../config/bq");
+const bigquery = require("../config/gcp/bq");
 
 async function createDataset(datasetId = "my_new_dataset") {
   const options = {

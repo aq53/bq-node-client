@@ -1,4 +1,4 @@
-const bigquery = require("../config/bq");
+const bigquery = require("../config/gcp/bq");
 const { camelize, returnDataType, datasetId } = require("../utils");
 
 async function updateSchema(tableId, row) {
