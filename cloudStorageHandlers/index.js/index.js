@@ -2,17 +2,20 @@ const storage = require("../../config/gcp/storage");
 const { bucketName } = require("../../utils");
 const path = require("path");
 
-async function uploadFileToCloudStorage(filename) {
+async function uploadFileToCloudStorage(files) {
   const filePath = __basedir + "/resources/static/assets/uploads/";
+  for (let i = 0; i < files.length; i++) {
+    await storage
+      .bucket(bucketName)
+      .upload(path.join(filePath, files[i].originalname), {
+        gzip: true,
+        metadata: {
+          cacheControl: "public, max-age=31536000",
+        },
+      });
+  }
 
-  await storage.bucket(bucketName).upload(path.join(filePath, filename), {
-    gzip: true,
-    metadata: {
-      cacheControl: "public, max-age=31536000",
-    },
-  });
-
-  console.log(`${filename} uploaded to ${bucketName}.`);
+  console.log(`uploaded to ${bucketName}.`);
 }
 
 // [END storage_upload_file]

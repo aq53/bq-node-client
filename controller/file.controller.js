@@ -5,10 +5,10 @@ const upload = async (req, res) => {
   try {
     await uploadFile(req, res);
 
-    if (req.file == undefined) {
+    if (req.files == undefined) {
       return res.status(400).send({ message: "Please upload a file!" });
     }
-    await uploadFileToCloudStorage(req.file.originalname);
+    await uploadFileToCloudStorage(req.files);
     res.status(200).send({
       message: "Uploaded the file successfully: ",
     });

@@ -7,7 +7,6 @@ let storage = multer.diskStorage({
     cb(null, __basedir + "/resources/static/assets/uploads/");
   },
   filename: (req, file, cb) => {
-    console.log("fileName:::", file);
     cb(null, file.originalname);
   },
 });
@@ -15,7 +14,7 @@ let storage = multer.diskStorage({
 let uploadFile = multer({
   storage: storage,
   limits: { fileSize: maxSize },
-}).single("file");
+}).array("files");
 
 let uploadFileMiddleware = util.promisify(uploadFile);
 module.exports = uploadFileMiddleware;
