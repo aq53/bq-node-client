@@ -3,7 +3,7 @@ const { bucketName } = require("../../utils");
 const path = require("path");
 
 async function uploadFileToCloudStorage(files) {
-  const filePath = __basedir + "/resources/static/assets/uploads/";
+  const filePath = __basedir + "/uploads/";
   for (let i = 0; i < files.length; i++) {
     await storage
       .bucket(bucketName)
