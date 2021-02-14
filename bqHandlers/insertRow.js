@@ -17,7 +17,7 @@ async function insertIntoRelationTable(tableRow) {
   gtmStrategy = gtmStrategy.toLowerCase();
   geographicalMarkets = JSON.parse(geographicalMarkets.toLowerCase());
   fundraisingRound = fundraisingRound.toLowerCase();
-  
+
   const row1 = {
     postId,
     statusText: "Co Creation",
@@ -106,7 +106,7 @@ function insertRow(tableId, row) {
         }
         await bigquery.dataset(datasetId).table(tableId).insert([tableRow]);
         await insertIntoRelationTable(tableRow);
-        resolve({ data: row, tableId });
+        resolve({ data: { ...row, id: tableRow.postId }, tableId });
       } catch (err) {
         console.log("INSERT ROW::", err);
         reject(err);
