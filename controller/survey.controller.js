@@ -24,7 +24,7 @@ const create = (req, res) => {
   <p> Report: ${reportUrl}?params=${encodedParams}</p><br>`,
       };
 
-      //   await transporter.sendMail(mailOptions);
+      await transporter.sendMail(mailOptions);
       console.log("dataset", dataset);
       res.status(200).send({
         msg: "Insert successfull!",
